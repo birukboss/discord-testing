@@ -1,0 +1,13 @@
+name: CI/CD Pipeline
+
+on: [push]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Notification
+        uses: appleboy/discord-action@v1.2.0
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          message: "Workflow finished successfully for commit: ${{ github.sha }}"
